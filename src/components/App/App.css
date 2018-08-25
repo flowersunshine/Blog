@@ -1,0 +1,17 @@
+.logo {
+    width: 0.5rem;
+    float: left;
+}
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-bar a{
+    font-size: 0.16rem;
+    color: #fff;
+    margin: 0.04rem;
+}
+.footer {
+    text-align: center;
+}
