@@ -1,12 +1,10 @@
 import axios from 'axios'
 
-const instance = axios.create({
-        baseURl: 'http://www.wangxiaotian.com/api',
-     })
+axios.defaults.baseURL = 'http://localhost:3000/';
 
 export function getPostList() {
-    return instance.get('postList')
+    return axios.get('postlist')
 }
 export function getArticle(id) {
-    return instance.get(`article/${id}`)
+    return axios.get(`article/${id}`)
 }

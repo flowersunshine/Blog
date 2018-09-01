@@ -3,10 +3,11 @@ import logo from '../../logo.svg'
 import './App.css'
 import { Layout } from 'antd'
 import  SiderRecommend from '../sider/Sider'
-import { PostList } from '../PostList/PostList'
+import  PostList  from '../PostList/PostList'
 import { getPostList } from '../../axios/axios'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Author } from '../author/author';
+import Article from '../article/article';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -14,17 +15,6 @@ const { Header, Footer, Sider, Content } = Layout;
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      postList: []
-    }
-  }
-
-  componentDidMount() {
-    getPostList().then(res => {
-      this.setState({
-        postList: res.data
-      })
-    })
   }
   
   render() {
@@ -40,8 +30,9 @@ class App extends Component {
           </Header>
           <Layout>
             <Content>
-                <Route path="/1" component={PostList}></Route>
+                <Route exact path="/" component={PostList}></Route>
                 <Route path="/author" component={Author}></Route>
+                <Route path="/article/:id" component={Article}></Route>
             </Content>
             <Sider><SiderRecommend></SiderRecommend></Sider>
           </Layout>
