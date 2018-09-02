@@ -1,5 +1,3 @@
-@import '~antd/dist/antd.css';
-
 body {
   margin: 0;
   padding: 0;
@@ -9,3 +7,5 @@ body {
 html {
   font-size: 100px;
 }
+
+ul,li{ padding:0;margin:0;list-style:none}

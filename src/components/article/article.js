@@ -7,7 +7,7 @@ export default class Article extends React.Component {
         this.state = {
             content: null
         }
-    };
+    }
 
     componentDidMount() {
         const self = this;
@@ -16,7 +16,7 @@ export default class Article extends React.Component {
                 content: res.data
             });
         });
-    };
+    }
 
     render() {
         return (
@@ -31,5 +31,5 @@ export default class Article extends React.Component {
                 </div>
             </div>
         );
-    };
+    }
 }

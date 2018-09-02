@@ -1,0 +1,11 @@
+.avator {
+    float: left;
+    width: 1.5rem
+}
+.person-desc {
+    margin: 0 2rem;
+}
+.person-name {
+    font-size: 0.2rem;
+    font-weight: 600;
+}

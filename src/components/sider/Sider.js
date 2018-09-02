@@ -1,15 +1,16 @@
 import React from 'react'
 import { Icon } from 'antd';
+import './Sider.css'
 
 class SiderRecommend extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            time: new Date().getDate()
+            time: new Date().toLocaleString()
         }
-        setTimeout(() => {
+        setInterval(() => {
             this.setState({
-                time: new Date().getDate()
+                time: new Date().toLocaleString()
             })
         },1000);
     }
@@ -17,9 +18,9 @@ class SiderRecommend extends React.Component {
     render(){
         return(
             <div>
-                <header>{this.state.time}</header>
-                <div className="recommend-item">
-                    <a><Icon type="github" />个人Github</a>
+                <header className="center time">{this.state.time}</header>
+                <div className="recommend-item center">
+                    <a href="https://github.com/flowersunshine?tab=repositories" target="_blank"><Icon type="github" />个人Github</a>
                 </div>
             </div>
         );

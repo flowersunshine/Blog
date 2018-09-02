@@ -9,7 +9,7 @@ export function Post({id, infoImg, title, description, comment, like, modifyDate
             <div className="content">
                 <Link to={'/article/' + id} className="post-title" href={id}>{title}</Link>
                 <p className="post-desc">{description}</p>
-                <footer classNamepost-footer>
+                <footer className="post-footer">
                     <CommentFooter {...comment}></CommentFooter>
                     <Like {...like}></Like>
                     <span>{modifyDate}</span>

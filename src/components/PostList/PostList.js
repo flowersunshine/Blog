@@ -1,7 +1,7 @@
 import React from 'react';
 import { Post } from '../Post/Post';
 import {getPostList} from '../../axios/axios'
-
+import './PostList.css'
 export default class PostList extends React.Component {
     constructor(props) {
         super(props)
@@ -21,7 +21,7 @@ export default class PostList extends React.Component {
 
     render(){
         return (
-        <ul>
+        <ul className="list-wrapper">
             {this.state.postList.map(post => {
                 return (
                     <Post {...post} key={post.id}></Post>

@@ -22,19 +22,20 @@ class App extends Component {
       <Router>
         <Layout>
           <Header>
-            <img src={logo} alt="logo" className="logo"></img>
+            <img src={logo} alt="logo" className="logo" />
             <div className="nav-bar">
               <Link to="/">文章列表</Link>
               <Link to="/author">作者简介</Link>
             </div>
           </Header>
           <Layout>
-            <Content>
+            <Sider theme="light"><SiderRecommend></SiderRecommend></Sider>
+            <Content style={{padding: '0.3rem'}}>
                 <Route exact path="/" component={PostList}></Route>
                 <Route path="/author" component={Author}></Route>
                 <Route path="/article/:id" component={Article}></Route>
             </Content>
-            <Sider><SiderRecommend></SiderRecommend></Sider>
+            <Sider theme="light"><SiderRecommend></SiderRecommend></Sider>
           </Layout>
           <Footer><p className="footer">本Blog的最终解释权由flowersunshine所有，如有问题可以邮件<a href="mailto:wang_xiao_tian@126.com">wang_xiao_tian@126.com</a></p></Footer>
         </Layout>
