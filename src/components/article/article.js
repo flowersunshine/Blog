@@ -1,7 +1,8 @@
 import React from "react";
-import { getArticle, addRead, getAncillaryInfoAndComment } from "../../axios/axios";
+import { getArticle, addRead, getAncillaryInfoAndComment, addLike } from "../../axios/axios";
 import './article.css'
 import { Comment } from '../comment/comment'
+import { Icon } from "antd";
 
 export default class Article extends React.Component {
     constructor(props) {
@@ -10,6 +11,7 @@ export default class Article extends React.Component {
             content: null,
             ancillaryInfoAndComment: null
         }
+        this.like = this.like.bind(this)
     }
 
     componentWillMount() {
@@ -31,6 +33,12 @@ export default class Article extends React.Component {
         })
     }
 
+    like(){
+        addLike(this.props.match.params.id).then(res => {
+
+        })
+    }
+
     render() {
         return (
             <div>
@@ -40,7 +48,10 @@ export default class Article extends React.Component {
                     <span>阅读:{this.state.ancillaryInfoAndComment.readednum}</span>
                     <span>评论:{this.state.ancillaryInfoAndComment.commentnum}</span>
                     <span>喜欢:{this.state.ancillaryInfoAndComment.likednum}</span>
-                    <article dangerouslySetInnerHTML={{ __html: this.state.content }}></article>
+                </div>
+                <article dangerouslySetInnerHTML={{ __html: this.state.content }}></article>
+                <div>
+                    <button onClick={this.like}><Icon type="heart" theme="outlined" />我喜欢</button>
                 </div>
                 <Comment id={this.props.match.params.id}></Comment>
             </div>
