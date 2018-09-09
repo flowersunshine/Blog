@@ -47,9 +47,9 @@ export default class Article extends React.Component {
                 <h1>{this.state.title}</h1>
                 <div>
                     {/* <span>{this.state.ancillaryInfoAndComment.modifyTime}</span> */}
-                    <span>阅读:{this.state.ancillaryInfoAndComment.read}</span>
-                    <span>评论:{this.state.ancillaryInfoAndComment.comments}</span>
-                    <span>喜欢:{this.state.ancillaryInfoAndComment.like}</span>
+                    <span>阅读:{this.state.ancillaryInfoAndComment.read || 0}</span>
+                    <span>评论:{this.state.ancillaryInfoAndComment.comments || 0}</span>
+                    <span>喜欢:{this.state.ancillaryInfoAndComment.like || 0}</span>
                 </div>
                 <article dangerouslySetInnerHTML={{ __html: this.state.content }}></article>
                 <div>
