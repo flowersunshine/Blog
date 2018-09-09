@@ -2,10 +2,9 @@ import React from 'react'
 import { Icon } from 'antd';
 import './read.css'
 
-const Read = ({num}) => (
-    <span>
+export const Read = ({read = 0}) => (
+    <span className="read">
         <Icon type="book" />
-        <i>{num}</i>
+        <i>{read}</i>
     </span>
 )
-export default Read

@@ -1,11 +1,12 @@
 import React from 'react'
 import { Icon } from 'antd';
+import './Like.css'
 
-export function Like({num}) {
+export function Like({like = 0}) {
     return (
-        <span>
+        <span className="like">
             <Icon type="like-o" />
-            <i>{num}</i>
+            <i>{like}</i>
         </span>
     );
 }

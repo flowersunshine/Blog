@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from 'antd';
 import './Sider.css'
-import { getVisit, addVisit } from '../../axios/axios'
+import { getVisit } from '../../axios/axios'
 class SiderRecommend extends React.Component {
     constructor(props){
         super(props);
@@ -16,21 +16,16 @@ class SiderRecommend extends React.Component {
         },1000);
     }
     componentWillMount(){
-        addVisit().then(res => {
-
-        }).catch(err => {
-            console.error(err)
-        })
         getVisit().then(res => {
             this.setState({
-                visitNum: res.data.num
+                visitNum: res.data.visitNum
             })
         })
     }
     render(){
         return(
             <div>
-                <div>网站总访问量：{this.state.visitNum}</div>
+                <div className="center">网站总访问量：{this.state.visitNum}</div>
                 <header className="center time">{this.state.time}</header>
                 <div className="recommend-item center">
                     <a href="https://github.com/flowersunshine?tab=repositories" target="_blank"><Icon type="github" />个人Github</a>

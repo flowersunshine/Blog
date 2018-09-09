@@ -1,11 +1,12 @@
 import React from 'react'
 import { Icon } from 'antd';
+import "./commentFooter.css";
 
-export function CommentFooter({num}){
+export function CommentFooter({comments = 0}){
     return (
-        <span>
+        <span className="comment-footer">
             <Icon type="edit" />
-            <i>{num}</i>
+            <i>{comments}</i>
         </span>
     );
 }

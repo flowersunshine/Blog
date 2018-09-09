@@ -15,7 +15,7 @@ export function getArticle(id) {
     return axios.get(`article/${id}`)
 }
 export function addComment(id, content){
-    return axios.post('comment',{id,content})
+    return axios.post('comment',{id: id, content: content, date: new Date()})
 }
 export function deleteComment(id){
     return axios.delete(`comment/${id}`)

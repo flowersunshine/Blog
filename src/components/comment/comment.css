@@ -1,0 +1,14 @@
+.comment-item {
+    border: 1px solid #999;
+    padding: 0.04rem;
+    margin: 0.04rem;
+}
+.add-comment{
+    margin: 0.5rem 0.04rem;
+}
+.add-comment-input{
+    display: block;
+    width: 5rem;
+    height: 1rem;
+    resize: none;
+}
