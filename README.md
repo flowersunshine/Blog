@@ -14,20 +14,15 @@
 这里介绍的是用create-react-app创建工程来引入scss的方法，对于其他方式创建的工程我不知道是否适用。
 1. 首先不管适用什么方式创建工程，肯定都需要引入scss的相关依赖 npm install sass-loader node-sass --save-dev
 2. 进行webpack.config的配置，直接在文件中引入scss
-    找到node_modules/react-scripts/config/webpack.config.dev.js文件和webpack.config.prod.js文件（两个文件都要改）,将module配置项的最后一项配置改成如下：
-    <pre>
-        { 
-            loader: require.resolve('file-loader'),
-            loaders. exclude: [/\.js$/, /\.html$/, /\.json$/,/\.scss$/],
-            options: { name: 'static/media/[name].[hash:8].[ext]',
-        },
-        {
-            test: /\.scss$/, 
-            loaders: ['style-loader', 'css-loader', 'sass-loader'], 
-        }
-    </pre>
-3. 在package.json中添加build-css，watch-css
-    "build-css": "node-sass-chokidar src/ -o src/"
-    
-
+找到node_modules/react-scripts/config/webpack.config.dev.js文件和webpack.config.prod.js文件（两个文件都要改）,将module配置项的最后一项配置改成如下：
+    { 
+        loader: require.resolve('file-loader'),
+        loaders. exclude: [/\.js$/, /\.html$/, /\.json$/,/\.scss$/],
+        options: { name: 'static/media/[name].[hash:8].[ext]',
+    },
+    {
+        test: /\.scss$/, 
+        loaders: ['style-loader', 'css-loader', 'sass-loader'], 
+    }
+不过这个方法感觉有一点不好，就是你node_modules中的文件不会上传git仓库，每次重新拉取工程之后重新npm install的时候都需要重新配置，这个问题有时间的时候我会查一下，看看有没有解决方案。
 ### 有任何问题可以给我发邮件wang_xiao_tian@126.com，我们一起探讨技术，一起进步，谢谢
