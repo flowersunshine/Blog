@@ -9,7 +9,8 @@ export default class Article extends React.Component {
         super(props)
         this.state = {
             content: null,
-            ancillaryInfoAndComment: null
+            ancillaryInfoAndComment: {},
+            title: ''
         }
         this.like = this.like.bind(this)
     }
@@ -23,7 +24,8 @@ export default class Article extends React.Component {
         })
         getArticle(this.props.match.params.id).then(res => {
             self.setState({
-                content: res.data
+                content: res.data.html,
+                title: res.data.title
             });
         });
         addRead(this.props.match.params.id).then(res => {
@@ -42,12 +44,12 @@ export default class Article extends React.Component {
     render() {
         return (
             <div>
-                {/* <h1>{title}</h1> */}
+                <h1>{this.state.title}</h1>
                 <div>
-                    <span>{this.state.ancillaryInfoAndComment.modifyTime}</span>
-                    <span>阅读:{this.state.ancillaryInfoAndComment.readednum}</span>
-                    <span>评论:{this.state.ancillaryInfoAndComment.commentnum}</span>
-                    <span>喜欢:{this.state.ancillaryInfoAndComment.likednum}</span>
+                    {/* <span>{this.state.ancillaryInfoAndComment.modifyTime}</span> */}
+                    <span>阅读:{this.state.ancillaryInfoAndComment.read || 0}</span>
+                    <span>评论:{this.state.ancillaryInfoAndComment.comments || 0}</span>
+                    <span>喜欢:{this.state.ancillaryInfoAndComment.like || 0}</span>
                 </div>
                 <article dangerouslySetInnerHTML={{ __html: this.state.content }}></article>
                 <div>

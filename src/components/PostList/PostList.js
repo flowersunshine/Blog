@@ -7,7 +7,7 @@ export default class PostList extends React.Component {
         super(props)
         this.state = {
             postList: [],
-            ancillaryInfoAndComment: []
+            ancillaryInfoAndComment: {}
         }
     }
 
@@ -16,8 +16,8 @@ export default class PostList extends React.Component {
         getPostList().then(res => {
           res.data.postlist.forEach(element => {
               getAncillaryInfoAndComment(element.id).then(res => {
-                  this.setState({
-                    ancillaryInfoAndComment: this.state.ancillaryInfoAndComment.concat([{[element.id]: res.data}])
+                self.setState({
+                    ancillaryInfoAndComment: Object.assign({}, {...self.state.ancillaryInfoAndComment}, {[element.id]: res.data})
                   })
               })
           });

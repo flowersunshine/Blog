@@ -4,7 +4,7 @@ import './App.css'
 import { Layout } from 'antd'
 import  SiderRecommend from '../sider/Sider'
 import  PostList  from '../PostList/PostList'
-import { getPostList } from '../../axios/axios'
+import { getPostList, addVisit } from '../../axios/axios'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Author } from '../author/author';
 import Article from '../article/article';
@@ -17,6 +17,14 @@ class App extends Component {
     super(props);
   }
   
+  componentWillMount(){
+    addVisit().then(res => {
+
+    }).catch(err => {
+        console.error(err)
+    })
+  }
+
   render() {
     return (
       <Router>

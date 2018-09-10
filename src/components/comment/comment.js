@@ -6,7 +6,8 @@ export class Comment extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            comments: []
+            comments: [],
+            comment: ''
         }
         this.commentInput = this.commentInput.bind(this)
         this.addComment = this.addComment.bind(this)
@@ -15,15 +16,14 @@ export class Comment extends React.Component{
     componentWillMount(){
         getComment(this.props.id).then(res => {
             this.setState({
-                comments: res.data,
-                comment: ''
+                comments: res.data
             })
         })
     }
 
     commentInput(e){
         this.setState({
-            comment: e.detail.value
+            comment: e.target.value
         })
     }
 
@@ -31,7 +31,7 @@ export class Comment extends React.Component{
         if(!this.checkComment()) return;
         addComment(this.props.id, this.state.comment).then(res => {
             this.setState({
-                comments: this.state.comments.concat([{content: this.state.comment, id: new Symbol()}]),
+                comments: this.state.comments.concat([{content: this.state.comment, _id: Symbol().toString()}]),
                 comment: ''
             })
         })
@@ -47,15 +47,15 @@ export class Comment extends React.Component{
                 {
                     this.state.comments.map((comment, index) => {
                         return (
-                        <p key={comment.id}>
+                        <p key={comment._id} className="comment-item">
                             {comment.content}
                         </p>
                         )
                     })
                 }
-                <div>
-                    <textarea placeholder="您可以发表出您对文章的想法" onChange={this.commentInput} value={this.state.comment}></textarea>
-                    <button onClick={addComment}>添加评论</button>
+                <div className="add-comment">
+                    <textarea placeholder="您可以发表出您对文章的想法" onChange={this.commentInput} value={this.state.comment} className="add-comment-input"></textarea>
+                    <button onClick={this.addComment}>添加评论</button>
                 </div>
             </div>
         )

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:3000/';
+axios.defaults.baseURL = 'http://45.76.2.56:3000/';
 
 export function addVisit(){
     return axios.put('visit')
@@ -15,7 +15,7 @@ export function getArticle(id) {
     return axios.get(`article/${id}`)
 }
 export function addComment(id, content){
-    return axios.post('comment',{id,content})
+    return axios.post('comment',{id: id, content: content, date: new Date()})
 }
 export function deleteComment(id){
     return axios.delete(`comment/${id}`)
