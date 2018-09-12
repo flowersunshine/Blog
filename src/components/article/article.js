@@ -51,7 +51,7 @@ export default class Article extends React.Component {
                     <span>评论:{this.state.ancillaryInfoAndComment.comments || 0}</span>
                     <span>喜欢:{this.state.ancillaryInfoAndComment.like || 0}</span>
                 </div>
-                <article dangerouslySetInnerHTML={{ __html: this.state.content }}></article>
+                <article dangerouslySetInnerHTML={{ __html: this.state.content }} className="article-content"></article>
                 <div>
                     <button onClick={this.like}><Icon type="heart" theme="outlined" />我喜欢</button>
                 </div>

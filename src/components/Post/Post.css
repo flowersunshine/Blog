@@ -1,0 +1,12 @@
+.content{
+    margin-bottom: 0.15rem;
+}
+.post-title{
+    font-size: 0.24rem;
+    line-height: 1.4;
+    color: black;
+}
+.post-desc{
+    font-size: 0.18rem;
+    line-height: 1.4;
+}
