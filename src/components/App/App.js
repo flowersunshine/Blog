@@ -15,6 +15,18 @@ const { Header, Footer, Sider, Content } = Layout;
 class App extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      postlist: [],
+      comments: {
+        "id": {}
+      },
+      articles: {
+        "id": {}
+      },
+      brief: {
+        "id": {}
+      }
+    }
   }
   
   componentWillMount(){
