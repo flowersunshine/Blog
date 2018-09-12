@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import logo from '../../logo.svg'
 import './App.css'
 import { Layout } from 'antd'
 import  SiderRecommend from '../sider/Sider'
@@ -30,14 +29,12 @@ class App extends Component {
       <Router>
         <Layout>
           <Header>
-            <img src={logo} alt="logo" className="logo" />
             <div className="nav-bar">
               <Link to="/">文章列表</Link>
               <Link to="/author">作者简介</Link>
             </div>
           </Header>
           <Layout>
-            <Sider theme="light"><SiderRecommend></SiderRecommend></Sider>
             <Content style={{padding: '0.3rem'}}>
                 <Route exact path="/" component={PostList}></Route>
                 <Route path="/author" component={Author}></Route>
