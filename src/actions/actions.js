@@ -6,11 +6,13 @@ function addPostListActions(postlist){
         postlist
     }
 }
-function addCommentAction(content, articleId){
+function addCommentAction(content, articleId, date, _id){
     return {
         type: addComment,
         content,
-        articleId
+        articleId,
+        date,
+        _id
     }
 }
 function addBriefAction(articleId, brief){
