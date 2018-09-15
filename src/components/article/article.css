@@ -2,6 +2,6 @@
 .article-content{
     margin-bottom: 0.4rem;
 }
-[class^=language]{
+pre {
     background-color: #333;
 }
