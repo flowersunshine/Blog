@@ -1,3 +1,7 @@
+@import './agate.css';
 .article-content{
     margin-bottom: 0.4rem;
 }
+/* [class^=language]{
+    background-color: rgba(0, 0, 0, 0.7);
+} */
