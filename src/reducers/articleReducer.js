@@ -3,9 +3,7 @@ import { addArticle } from '../constant/actionTypeConstant'
 function addArticleReducer(state = {}, action){
     switch (action.type) {
         case addArticle : {
-            return {...state,...{
-                [action.articleId]: {articleId: action.articleId, content: action.content}
-            }};
+            return {[action.articleId]: {title: action.title, content: action.content}};
         }
         default : {
             return state;
