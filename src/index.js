@@ -24,3 +24,6 @@ const store = createStore(rootReducers, applyMiddleware(ThunkMiddleware));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
+store.subscribe(()=> {
+    console.log(store.getState())
+});

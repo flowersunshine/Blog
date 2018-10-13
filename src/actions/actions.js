@@ -12,9 +12,12 @@ function getPostListAction(){
     return (dispatch, getState) => {
         return getPostList().then(res => {
             dispatch(receivePostListAction(res.data.postlist));
-            res.data.brief.forEach((item, index) => {
-                dispatch(receiveBriefAction(item.articleId, item));
-            });
+            for (const key in res.data.brief) {
+                if (res.data.brief.hasOwnProperty(key)) {
+                    const element = res.data.brief[key];
+                    dispatch(receiveBriefAction(key, element));
+                }
+            }
         });
     }
 }

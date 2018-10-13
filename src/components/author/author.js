@@ -3,7 +3,7 @@ import './author.css'
 export function Author(){
     return(
         <div>
-            <img src="http://45.76.2.56:3001/static/image/avator.jpg" className="avator"></img>
+            <img src="http://45.76.2.56:3001/static/image/avator.jpg" className="avator" alt="作者头像"></img>
             <div className="person-desc">
                 <header className="person-name">王肖添</header>
                 <p className="person-info">王肖添，男，1991年11月生于辽宁省沈阳市。2014年在东北大学信息科学与技术学院获得通信工程学士学位，2017年在大连海事大学信息科学技术学院获得电子与通信工程硕士学位。

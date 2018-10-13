@@ -11,12 +11,7 @@ import Article from '../article/article';
 import { connect } from 'react-redux';
 
 const { Header, Footer, Sider, Content } = Layout;
-
-
 class App extends Component {
-  constructor(props){
-    super(props);
-  }
   
   componentWillMount(){
 	  this.props.dispatch(getVisitAction());

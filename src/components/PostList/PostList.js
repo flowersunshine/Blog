@@ -6,9 +6,6 @@ import { getPostListAction } from '../../actions/actions'
 import { connect } from 'react-redux';
 
 class PostList extends React.Component {
-    constructor(props){
-        super(props);
-    }
 
     componentDidMount(){
         const { dispatch } = this.props;

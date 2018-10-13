@@ -6,9 +6,6 @@ import { addArticleAction, addLikeAction, getCommentsAction, addReadAction } fro
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 class Article extends React.Component {
-    constructor(props) {
-        super(props)
-    }
 
     componentWillMount() {
         const {id, dispatch} = this.props;

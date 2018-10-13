@@ -24,7 +24,7 @@ class SiderRecommend extends React.Component {
                 <div className="center">网站总访问量：{visitNum}</div>
                 <header className="center time">{this.state.time}</header>
                 <div className="recommend-item center">
-                    <a href="https://github.com/flowersunshine?tab=repositories" target="_blank"><Icon type="github" />个人Github</a>
+                    <a href="https://github.com/flowersunshine?tab=repositories" target="_blank" rel="noopener noreferrer"><Icon type="github" />个人Github</a>
                 </div>
             </div>
         );
