@@ -11,6 +11,6 @@ function addPostListReducer(state = [], action) {
     }
 }
 
-export default {
+export {
     addPostListReducer
 }

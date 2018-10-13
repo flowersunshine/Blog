@@ -10,6 +10,6 @@ function addCommentReducer(state = {}, action){
     }
 }
 
-export default {
+export {
     addCommentReducer
 }

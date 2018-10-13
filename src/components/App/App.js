@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
-import logo from '../../logo.svg'
-import './App.css'
-import { Layout } from 'antd'
-import  SiderRecommend from '../sider/Sider'
-import  PostList  from '../PostList/PostList'
-import { getVisitAction } from '../../actions/actions'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { Author } from '../author/author'
-import Article from '../article/article'
+import React, { Component } from 'react';
+import logo from '../../logo.svg';
+import './App.css';
+import { Layout } from 'antd';
+import  SiderRecommend from '../sider/Sider';
+import  PostList  from '../PostList/PostList';
+import { getVisitAction } from '../../actions/actions';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Author } from '../author/author';
+import Article from '../article/article';
+import { connect } from 'react-redux';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -33,7 +34,6 @@ class App extends Component {
             </div>
           </Header>
           <Layout>
-            <Sider theme="light"><SiderRecommend></SiderRecommend></Sider>
             <Content style={{padding: '0.3rem'}}>
                 <Route exact path="/" component={PostList}></Route>
                 <Route path="/author" component={Author}></Route>
@@ -48,4 +48,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);

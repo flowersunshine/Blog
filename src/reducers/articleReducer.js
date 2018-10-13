@@ -11,6 +11,6 @@ function addArticleReducer(state = {}, action){
     }
 }
 
-export default {
+export {
     addArticleReducer
 }

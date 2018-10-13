@@ -11,4 +11,4 @@ function addVisitReducer(state = 0, action){
     }
 }
 
-export default { addVisitReducer }
+export { addVisitReducer }

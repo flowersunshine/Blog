@@ -23,7 +23,7 @@ export function Post({id, title, description, commentNum, like, modifyDate, read
     );
 }
 Post.propTypes = {
-    id: propTypes.string.isRequired,
+    id: propTypes.number.isRequired,
     title: propTypes.string.isRequired,
     description: propTypes.string.isRequired,
     commentNum: propTypes.number.isRequired,

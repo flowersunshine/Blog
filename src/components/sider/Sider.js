@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from 'antd';
 import './Sider.css';
 import propTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class SiderRecommend extends React.Component {
     constructor(props){
@@ -32,4 +33,9 @@ class SiderRecommend extends React.Component {
 SiderRecommend.propTypes = {
     visitNum: propTypes.number.isRequired
 }
-export default SiderRecommend
+function mapStatetoProps(state){
+    return {
+        visitNum: state.visitNum
+    };
+}
+export default connect(mapStatetoProps)(SiderRecommend);

@@ -8,6 +8,6 @@ const addArticle = 'ADD-ARTICLE';       // 添加文章内容详情
 const getComments = 'GET-COMMENTS';     // 获取文章的所有评论
 const addVisit = 'ADD-VISIT';           // 对网站添加访问
 
-export default {
+export {
     addArticle, addBrief, addComment, addCommentFooter, addLike, addPostList, addRead, getComments, addVisit
 }

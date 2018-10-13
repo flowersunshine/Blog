@@ -1,41 +1,42 @@
 import React from 'react';
 import { Post } from '../Post/Post';
-import { getPostList, getAncillaryInfoAndComment } from '../../axios/axios'
-import './PostList.css'
-export default class PostList extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            postList: [],
-            ancillaryInfoAndComment: {}
-        }
+import './PostList.css';
+import propTypes from 'prop-types';
+import { getPostListAction } from '../../actions/actions'
+import { connect } from 'react-redux';
+
+class PostList extends React.Component {
+    constructor(props){
+        super(props);
     }
 
-    componentWillMount() {
-        const self = this
-        getPostList().then(res => {
-          res.data.postlist.forEach(element => {
-              getAncillaryInfoAndComment(element.id).then(res => {
-                self.setState({
-                    ancillaryInfoAndComment: Object.assign({}, {...self.state.ancillaryInfoAndComment}, {[element.id]: res.data})
-                  })
-              })
-          });
-          self.setState({
-            postList: res.data.postlist
-          })
-        })
+    componentDidMount(){
+        const { dispatch } = this.props;
+        dispatch(getPostListAction());
     }
 
     render(){
+        const { postList, ancillaryInfoAndComment } = this.props;
         return (
-        <ul className="list-wrapper">
-            {this.state.postList.map(post => {
-                return (
-                    <Post {...post} key={post.id} {...this.state.ancillaryInfoAndComment[post.id]}></Post>
-                );
-            })}
-        </ul>
+            <ul className="list-wrapper">
+                {postList.map(post => {
+                    return (
+                        <Post {...post} key={post.id} {...ancillaryInfoAndComment[post.id]}></Post>
+                    );
+                })}
+            </ul>
         );
     }
 }
+PostList.propTypes = {
+    postList: propTypes.array.isRequired,
+    ancillaryInfoAndComment: propTypes.object.isRequired
+}
+function mapStatetoProps(state){
+    return {
+        postList: state.postlist,
+        ancillaryInfoAndComment: state.ancillaryInfoAndComment
+    }
+}
+
+export default connect(mapStatetoProps)(PostList);

@@ -1,5 +1,5 @@
-import { addPostList, addComment, addBrief, addLike, addRead, addCommentFooter, addArticle, getComments, addVisit } from '../constant/actionTypeConstant';
-import axios from '../axios/axios';
+import { addPostList, addBrief, addCommentFooter, addArticle, getComments, addVisit } from '../constant/actionTypeConstant';
+import { getPostList, addComment, getComment, getAncillaryInfoAndComment, addLike, addRead, getArticle, getVisit } from '../axios/axios';
 // 接收到文章列表
 function receivePostListAction(postlist){
     return {
@@ -10,15 +10,18 @@ function receivePostListAction(postlist){
 // 从网络请求postlist
 function getPostListAction(){
     return (dispatch, getState) => {
-        return axios.getPostList().then(res => {
+        return getPostList().then(res => {
             dispatch(receivePostListAction(res.data.postlist));
+            res.data.brief.forEach((item, index) => {
+                dispatch(receiveBriefAction(item.articleId, item));
+            });
         });
     }
 }
 // 添加一条评论,服务端将该条评论添加到数据库，然后返回该文章的所有评论，这么做的一个原因就是要更新评论区，因为当你在看文章的时候可能其他人已经添加了其他的评论，而你不知道，所以借着这机会刷新评论区
 function addCommentAction(content, articleId){
     return (dispatch, getState) => {
-        return axios.addComment(articleId, content).then(res => {
+        return addComment(articleId, content).then(res => {
             dispatch(receiveCommentsAction(articleId, res.data));
         });
     }
@@ -34,7 +37,7 @@ function receiveCommentsAction(articleId, comments){
 // 从网络请求文章评论列表
 function getCommentsAction(articleId){
     return (dispatch, getState) => {
-        return axios.getComments(articleId).then(res => {
+        return getComment(articleId).then(res => {
             dispatch(receiveCommentsAction(articleId, res.data));
         });
     }
@@ -50,7 +53,7 @@ function receiveBriefAction(articleId, brief){
 // 从服务端拉取文章的简单信息
 function getBriefAction(articleId){
     return (dispatch, getState) => {
-        return axios.getAncillaryInfoAndComment(articleId).then(res => {
+        return getAncillaryInfoAndComment(articleId).then(res => {
             dispatch(receiveBriefAction(articleId, res.data));
         });
     }
@@ -58,7 +61,7 @@ function getBriefAction(articleId){
 // 向服务端发送喜欢的动作
 function addLikeAction(articleId){
     return (dispatch, getState) => {
-        return axios.addLike(articleId).then(res => {
+        return addLike(articleId).then(res => {
             console.log(res);
         });
     }
@@ -66,7 +69,7 @@ function addLikeAction(articleId){
 // 向服务端发送已经阅读的动作
 function addReadAction(articleId){
     return (dispatch, getState) => {
-        return axios.addRead(articleId).then(res => {
+        return addRead(articleId).then(res => {
             console.log(res);
         });
     }
@@ -86,9 +89,9 @@ function receiveArticleAction(articleId, article){
     }
 }
 // 从服务端拉取文章详细信息
-function getArticleAction(articleId){
+function addArticleAction(articleId){
     return (dispatch, getState) => {
-        return axios.getArticle(articleId).then(res => {
+        return getArticle(articleId).then(res => {
             dispatch(receiveArticleAction(articleId, res.data))
         });
     }
@@ -103,12 +106,11 @@ function receiveWebsiteAction(visitNum){
 // 从服务端拉取网站的访问次数
 function getVisitAction(){
     return (dispatch, getState) => {
-        return axios.getVisit().then(res => {
-            dispatch(receiveWebsiteAction(res.data));
+        return getVisit().then(res => {
+            dispatch(receiveWebsiteAction(res.data.visitNum));
         });
     }
 }
-export default {
-    addArticleAction, addBriefAction, addCommentAction, addCommentFooterAction, addLikeAction, addPostListActions, 
-    addReadAction, getPostListAction, getCommentsAction, getBriefAction, getVisitAction, getArticleAction
+export {
+    receivePostListAction, getPostListAction, addCommentAction, receiveCommentsAction, getCommentsAction, receiveBriefAction, getBriefAction, addLikeAction, addReadAction, addCommentFooterAction, receiveArticleAction, addArticleAction, receiveWebsiteAction, getVisitAction
 }
