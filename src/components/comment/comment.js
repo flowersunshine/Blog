@@ -1,24 +1,15 @@
-import React from 'react'
-import { getComment, addComment } from '../../axios/axios'
-import './comment.css'
+import React from 'react';
+import './comment.css';
+import propTypes from 'prop-types';
 
 export class Comment extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
-            comments: [],
             comment: ''
         }
-        this.commentInput = this.commentInput.bind(this)
-        this.addComment = this.addComment.bind(this)
-    }
-
-    componentWillMount(){
-        getComment(this.props.id).then(res => {
-            this.setState({
-                comments: res.data
-            })
-        })
+        this.commentInput = this.commentInput.bind(this);
+        this.addComment = this.addComment.bind(this);
     }
 
     commentInput(e){
@@ -29,12 +20,7 @@ export class Comment extends React.Component{
 
     addComment(){
         if(!this.checkComment()) return;
-        addComment(this.props.id, this.state.comment).then(res => {
-            this.setState({
-                comments: this.state.comments.concat([{content: this.state.comment, _id: Symbol().toString()}]),
-                comment: ''
-            })
-        })
+
     }
 
     checkComment(){
@@ -42,10 +28,11 @@ export class Comment extends React.Component{
     }
 
     render(){
+        const {comments} = this.props;
         return (
             <div>
                 {
-                    this.state.comments.map((comment, index) => {
+                    comments.map((comment, index) => {
                         return (
                         <p key={comment._id} className="comment-item">
                             {comment.content}
@@ -54,10 +41,13 @@ export class Comment extends React.Component{
                     })
                 }
                 <div className="add-comment">
-                    <textarea placeholder="您可以发表出您对文章的想法" onChange={this.commentInput} value={this.state.comment} className="add-comment-input"></textarea>
+                    <textarea placeholder="您可以发表出您对文章的想法" onChange={this.commentInput} className="add-comment-input"></textarea>
                     <button onClick={this.addComment}>添加评论</button>
                 </div>
             </div>
         )
     }
+}
+Comment.propTypes = {
+    comments: propTypes.array.isRequired,
 }

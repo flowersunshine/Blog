@@ -4,10 +4,10 @@ import './App.css'
 import { Layout } from 'antd'
 import  SiderRecommend from '../sider/Sider'
 import  PostList  from '../PostList/PostList'
-import { getPostList, addVisit } from '../../axios/axios'
+import { getVisitAction } from '../../actions/actions'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { Author } from '../author/author';
-import Article from '../article/article';
+import { Author } from '../author/author'
+import Article from '../article/article'
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -15,26 +15,10 @@ const { Header, Footer, Sider, Content } = Layout;
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      postlist: [],
-      comments: {
-        "id": {}
-      },
-      articles: {
-        "id": {}
-      },
-      brief: {
-        "id": {}
-      }
-    }
   }
   
   componentWillMount(){
-    addVisit().then(res => {
-
-    }).catch(err => {
-        console.error(err)
-    })
+	  this.props.dispatch(getVisitAction());
   }
 
   render() {
