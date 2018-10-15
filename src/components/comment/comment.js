@@ -25,6 +25,12 @@ class Comment extends React.Component{
 
     render(){
         const {comments, id, dispatch} = this.props;
+        if(!comments) return (
+            <div className="add-comment">
+                    <textarea placeholder="您可以发表出您对文章的想法" onChange={this.commentInput} className="add-comment-input"></textarea>
+                    <button onClick={() => {dispatch(addCommentAction(id))}}>添加评论</button>
+                </div>
+        );
         return (
             <div>
                 {
@@ -38,14 +44,13 @@ class Comment extends React.Component{
                 }
                 <div className="add-comment">
                     <textarea placeholder="您可以发表出您对文章的想法" onChange={this.commentInput} className="add-comment-input"></textarea>
-                    <button onClick={() => {dispatch(addCommentAction(id))}}>添加评论</button>
+                    <button onClick={() => {dispatch(addCommentAction(this.state.comment,id))}}>添加评论</button>
                 </div>
             </div>
         )
     }
 }
 Comment.propTypes = {
-    comments: propTypes.array.isRequired,
     id: propTypes.string.isRequired
 }
 function mapStatetoProps(state, myProps){

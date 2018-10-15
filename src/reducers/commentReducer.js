@@ -1,7 +1,7 @@
-import { addComment } from '../constant/actionTypeConstant'
+import { getComments } from '../constant/actionTypeConstant'
 function addCommentReducer(state = {}, action){
     switch (action.type) {
-        case addComment : {
+        case getComments : {
             return {[action.articleId]: action.comments};
         }
         default : {

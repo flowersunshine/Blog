@@ -15,16 +15,16 @@ class Article extends React.Component {
     }
 
     render() {
-        const {title, ancillaryInfoAndComment, content, id, dispatch} = this.props;
+        const {article, ancillaryInfoAndComment, id, dispatch} = this.props;
         return (
             <div>
-                <h1>{title}</h1>
+                <h1>{article && article.title}</h1>
                 <div>
-                    <span>阅读:{ancillaryInfoAndComment.read || 0}</span>
-                    <span>评论:{ancillaryInfoAndComment.comments || 0}</span>
-                    <span>喜欢:{ancillaryInfoAndComment.like || 0}</span>
+                    <span>阅读:{(ancillaryInfoAndComment && ancillaryInfoAndComment.read) || 0}</span>
+                    <span>评论:{(ancillaryInfoAndComment && ancillaryInfoAndComment.comments) || 0}</span>
+                    <span>喜欢:{(ancillaryInfoAndComment && ancillaryInfoAndComment.like) || 0}</span>
                 </div>
-                <article dangerouslySetInnerHTML={{ __html: content }} className="article-content"></article>
+                <article dangerouslySetInnerHTML={{ __html: article && article.content }} className="article-content"></article>
                 <div>
                     <button onClick={() => {dispatch(addLikeAction(id))}}><Icon type="heart" theme="outlined" />我喜欢</button>
                 </div>
@@ -34,17 +34,13 @@ class Article extends React.Component {
     }
 }
 Article.propTypes = {
-    title: propTypes.string.isRequired,
-    ancillaryInfoAndComment: propTypes.object.isRequired,
-    content: propTypes.string.isRequired,
     id: propTypes.string.isRequired
 }
 function mapStatetoProp(state, myProps){
     return {
-        id: myProps.matches.id,
-        title: state.article[myProps.matches.id].title,
-        content: state.article[myProps.matches.id].content,
-        ancillaryInfoAndComment: state.ancillaryInfoAndComment[myProps.matches.id]
+        id: myProps.match.params.id,
+        article: state.article[myProps.match.params.id],
+        ancillaryInfoAndComment: state.ancillaryInfoAndComment[myProps.match.params.id]
     }
 }
 export default connect(mapStatetoProp)(Article);
