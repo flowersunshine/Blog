@@ -2,7 +2,7 @@ import React from "react";
 import './article.css';
 import Comment from '../comment/comment';
 import { Icon } from "antd";
-import { addArticleAction, addLikeAction, getCommentsAction, addReadAction } from '../../actions/actions';
+import { addArticleAction, addLikeAction, getCommentsAction, addReadAction, getBriefAction } from '../../actions/actions';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 class Article extends React.Component {
@@ -12,6 +12,7 @@ class Article extends React.Component {
         dispatch(addArticleAction(id));
         dispatch(getCommentsAction(id));
         dispatch(addReadAction(id));
+        dispatch(getBriefAction(id));
     }
 
     render() {
