@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://45.77.35.56/api/';
+axios.defaults.baseURL = 'http://104.156.253.245/api/';
 
 function addVisit(){
     return axios.put('visit')
