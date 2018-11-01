@@ -3,6 +3,7 @@ import { getArticle, addRead, getAncillaryInfoAndComment, addLike } from "../../
 import './article.css'
 import { Comment } from '../comment/comment'
 import { Icon } from "antd";
+import './agate.css';
 
 export default class Article extends React.Component {
     constructor(props) {
