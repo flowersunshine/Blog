@@ -1,6 +1,6 @@
 import React from "react";
 import './article.css';
-import './agate.css';
+// import './agate.css';
 import Comment from '../comment/comment';
 import { Icon } from "antd";
 import { addArticleAction, addLikeAction, getCommentsAction, addReadAction, getBriefAction } from '../../actions/actions';
