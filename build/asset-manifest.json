@@ -1,16 +1,7 @@
-<<<<<<< HEAD
 {
-  "main.css": "static/css/main.510ee2c0.css",
-  "main.css.map": "static/css/main.510ee2c0.css.map",
-  "main.js": "static/js/main.9f8cc6e9.js",
-  "main.js.map": "static/js/main.9f8cc6e9.js.map",
-  "static\\media\\logo.svg": "static/media/logo.ee7cd8ed.svg"
-=======
-{
-  "main.css": "static/css/main.082e5ff1.css",
-  "main.css.map": "static/css/main.082e5ff1.css.map",
-  "main.js": "static/js/main.cd6e5707.js",
-  "main.js.map": "static/js/main.cd6e5707.js.map",
-  "static\\media\\logo.svg": "static/media/logo.ee7cd8ed.svg"
->>>>>>> 69a5e64ba72b830874c0208f4061123d261cdf30
+  "main.css": "static/css/main.c383a056.css",
+  "main.css.map": "static/css/main.c383a056.css.map",
+  "main.js": "static/js/main.e769e409.js",
+  "main.js.map": "static/js/main.e769e409.js.map",
+  "static/media/logo.svg": "static/media/logo.ee7cd8ed.svg"
 }
